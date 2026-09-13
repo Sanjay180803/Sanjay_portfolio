@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sanjay Balasubramaniam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14121A;
+    --ink-2:#1B1824;
+    --ink-3:#221E2E;
+    --paper:#F1EAE0;
+    --paper-dim:#B7ADC4;
+    --paper-faint:#847B94;
+    --rule:rgba(241,234,224,0.12);
+    --speech:#E8622C;
+    --systems:#B23E85;
+    --agentic:#F2A93C;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--agentic);color:var(--ink);}
+  a{color:inherit;}
+  .wrap{
+    max-width:840px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+  h1,h2,h3{
+    font-family:'Spectral',serif;
+    font-weight:600;
+    line-height:1.15;
+    margin:0;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace;}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    padding:96px 0 0;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem,5vw,3.4rem);
+    letter-spacing:-0.01em;
+  }
+  .hero .role{
+    font-family:'Spectral',serif;
+    font-style:italic;
+    font-weight:300;
+    color:var(--paper-dim);
+    font-size:1.25rem;
+    margin-top:6px;
+  }
+  .hero .lede{
+    max-width:640px;
+    font-size:1.08rem;
+    color:var(--paper-dim);
+    margin-top:28px;
+  }
+  .hero .lede strong{color:var(--paper);font-weight:500;}
+  .links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:4px 22px;
+    margin-top:32px;
+    font-size:0.92rem;
+  }
+  .links a{
+    text-decoration:none;
+    color:var(--paper-dim);
+    border-bottom:1px solid transparent;
+    padding-bottom:2px;
+    transition:color .15s, border-color .15s;
+  }
+  .links a:hover{color:var(--paper);border-color:var(--paper-dim);}
+
+  /* waveform divider */
+  .waveform{
+    margin:56px 0 0;
+    width:100%;
+    height:64px;
+    display:block;
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{
+    padding:64px 0;
+    border-top:1px solid var(--rule);
+  }
+  section.hero-section{border-top:none;}
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:20px;
+    margin-bottom:36px;
+  }
+  .section-head h2{
+    font-size:1.6rem;
+  }
+  .section-note{
+    font-size:0.86rem;
+    color:var(--paper-faint);
+    white-space:nowrap;
+  }
+  .section-note a{color:var(--paper-dim);text-decoration:underline;text-underline-offset:3px;}
+  .section-note a:hover{color:var(--paper);}
+
+  /* ---------- PUBLICATIONS ---------- */
+  .pub{
+    padding:20px 0;
+    border-top:1px solid var(--rule);
+  }
+  .pub:first-of-type{border-top:none;}
+  .pub-title{
+    font-family:'Spectral',serif;
+    font-size:1.08rem;
+    font-weight:400;
+    color:var(--paper);
+  }
+  .pub-meta{
+    font-size:0.86rem;
+    color:var(--paper-faint);
+    margin-top:4px;
+  }
+  .pub-role{
+    display:inline-block;
+    font-size:0.72rem;
+    color:var(--speech);
+    border:1px solid rgba(232,98,44,0.4);
+    border-radius:3px;
+    padding:1px 6px;
+    margin-left:8px;
+    vertical-align:middle;
+    letter-spacing:0.02em;
+  }
+  .pub-cite{
+    text-align:right;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.86rem;
+    color:var(--paper-dim);
+    white-space:nowrap;
+    padding-top:3px;
+  }
+  .pub-cite .num{color:var(--paper);font-size:1.05rem;}
+
+  /* ---------- EXPERIENCE ---------- */
+  .job{
+    display:grid;
+    grid-template-columns:160px 1fr;
+    gap:20px;
+    padding:26px 0;
+    border-top:1px solid var(--rule);
+  }
+  .job:first-of-type{border-top:none;}
+  .job-when{
+    font-size:0.86rem;
+    color:var(--paper-faint);
+    padding-top:4px;
+  }
+  .job-org{
+    font-family:'Spectral',serif;
+    font-size:1.2rem;
+    font-weight:600;
+  }
+  .job-role{
+    font-style:italic;
+    font-family:'Spectral',serif;
+    color:var(--paper-dim);
+    font-size:0.98rem;
+    margin-top:2px;
+  }
+  .job ul{
+    margin:14px 0 0;
+    padding-left:18px;
+    color:var(--paper-dim);
+  }
+  .job li{margin-bottom:8px;font-size:0.96rem;}
+  .job li b{color:var(--paper);font-weight:500;}
+  @media(max-width:600px){
+    .job{grid-template-columns:1fr;gap:4px;}
+  }
+
+  /* ---------- PROJECT FILTER ---------- */
+  .filters{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:36px;
+  }
+  .filter-btn{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.82rem;
+    background:transparent;
+    border:1px solid var(--rule);
+    color:var(--paper-faint);
+    padding:8px 16px;
+    border-radius:20px;
+    cursor:pointer;
+    transition:all .15s;
+  }
+  .filter-btn:hover{border-color:var(--paper-dim);color:var(--paper);}
+  .filter-btn.active{background:transparent;}
+  .filter-btn[data-cat="speech"].active{border-color:var(--speech);color:var(--speech);}
+  .filter-btn[data-cat="systems"].active{border-color:var(--systems);color:var(--systems);}
+  .filter-btn[data-cat="agentic"].active{border-color:var(--agentic);color:var(--agentic);}
+
+  .projects-grid{
+    display:grid;
+    gap:2px;
+  }
+  .card{
+    background:var(--ink-2);
+    padding:26px 28px;
+    border-left:3px solid transparent;
+    transition:background .15s;
+  }
+  .card:hover{background:var(--ink-3);}
+  .card[data-cat="speech"]{border-left-color:var(--speech);}
+  .card[data-cat="systems"]{border-left-color:var(--systems);}
+  .card[data-cat="agentic"]{border-left-color:var(--agentic);}
+  .card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .card h3{
+    font-size:1.18rem;
+    font-weight:600;
+  }
+  .card .tag{
+    font-size:0.72rem;
+    font-family:'IBM Plex Mono',monospace;
+    padding:3px 10px;
+    border-radius:20px;
+    border:1px solid currentColor;
+    opacity:0.85;
+  }
+  .card[data-cat="speech"] .tag{color:var(--speech);}
+  .card[data-cat="systems"] .tag{color:var(--systems);}
+  .card[data-cat="agentic"] .tag{color:var(--agentic);}
+  .card .stack{
+    font-size:0.84rem;
+    color:var(--paper-faint);
+    margin-top:6px;
+    font-style:italic;
+    font-family:'Spectral',serif;
+  }
+  .stack-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-top:10px;
+  }
+  .stack-tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.74rem;
+    color:var(--paper-dim);
+    background:var(--ink-3);
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:3px 8px;
+    white-space:nowrap;
+  }
+  .card[data-cat="speech"] .stack-tag{border-color:rgba(232,98,44,0.28);}
+  .card[data-cat="systems"] .stack-tag{border-color:rgba(178,62,133,0.28);}
+  .card[data-cat="agentic"] .stack-tag{border-color:rgba(242,169,60,0.28);}
+  .card ul{
+    margin:16px 0 0;
+    padding-left:18px;
+    color:var(--paper-dim);
+  }
+  .card li{margin-bottom:7px;font-size:0.94rem;}
+  .card li b{color:var(--paper);font-weight:500;}
+  .card-links{
+    margin-top:16px;
+    display:flex;
+    gap:18px;
+    font-size:0.86rem;
+  }
+  .card-links a{
+    text-decoration:none;
+    color:var(--paper-dim);
+    border-bottom:1px solid var(--rule);
+  }
+  .card-links a:hover{color:var(--paper);border-color:var(--paper-dim);}
+  .card.hidden{display:none;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:60px 0 80px;
+    border-top:1px solid var(--rule);
+  }
+  footer h2{font-size:1.6rem;margin-bottom:16px;}
+  footer p{color:var(--paper-dim);max-width:520px;}
+  footer .links{
+    margin-top:24px;
+    gap:12px;
+  }
+  footer .links a{
+    border:1px solid var(--rule);
+    border-radius:20px;
+    padding:10px 20px;
+    font-size:0.9rem;
+  }
+  footer .links a:first-child{
+    background:var(--paper);
+    color:var(--ink);
+    border-color:var(--paper);
+    font-weight:500;
+  }
+  footer .links a:first-child:hover{background:var(--paper-dim);border-color:var(--paper-dim);color:var(--ink);}
+  footer .links a:not(:first-child):hover{border-color:var(--paper-dim);}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero hero-section">
+    <h1>Sanjay Balasubramaniam</h1>
+    <div class="role">Master's in EE (ML &amp; Data Science), USC</div>
+    <p class="lede">
+      I work across machine learning and software engineering, from training
+      models to building the systems around them. I like understanding how
+      something works end to end, not just one layer of it.
+    </p>
+    <div class="links">
+      <a href="mailto:sanjayba@usc.edu">sanjayba@usc.edu</a>
+      <a href="https://linkedin.com/in/b-sanjay1808" target="_blank">LinkedIn</a>
+      <a href="https://github.com/Sanjay180803" target="_blank">GitHub</a>
+      <a href="https://scholar.google.com/citations?user=0P8r84AAAAAJ&hl=en" target="_blank">Google Scholar</a>
+    </div>
+  </header>
+
+  <svg class="waveform" viewBox="0 0 840 64" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="wf" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#B23E85"/>
+        <stop offset="50%" stop-color="#E8622C"/>
+        <stop offset="100%" stop-color="#F2A93C"/>
+      </linearGradient>
+    </defs>
+    <path d="M0,32 L18,32 L26,14 L34,50 L42,20 L50,44 L58,32 L74,32 L82,8 L90,56 L98,26 L106,38 L114,32 L130,32 L138,18 L146,46 L154,12 L162,52 L170,30 L178,34 L186,32 L202,32 L210,22 L218,42 L226,16 L234,48 L242,32 L258,32 L266,10 L274,54 L282,28 L290,36 L298,32 L314,32 L322,20 L330,44 L338,15 L346,49 L354,32 L370,32 L378,26 L386,38 L394,32 L410,32 L418,14 L426,50 L434,22 L442,42 L450,32 L466,32 L474,18 L482,46 L490,12 L498,52 L506,30 L514,34 L522,32 L538,32 L546,22 L554,42 L562,16 L570,48 L578,32 L594,32 L602,10 L610,54 L618,28 L626,36 L634,32 L650,32 L658,20 L666,44 L674,15 L682,49 L690,32 L706,32 L714,26 L722,38 L730,32 L746,32 L754,14 L762,50 L770,22 L778,42 L786,32 L802,32 L810,24 L818,40 L826,32 L840,32"
+      fill="none" stroke="url(#wf)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+
+  <!-- ================= PUBLICATIONS ================= -->
+  <section id="publications">
+    <div class="section-head">
+      <h2>Publications</h2>
+      <div class="section-note"><a href="https://scholar.google.com/citations?user=0P8r84AAAAAJ&hl=en" target="_blank">Full list on Google Scholar</a></div>
+    </div>
+
+    <div class="pub">
+      <div>
+        <div class="pub-title">Multilingual dysarthria detection and severity classification using layer-wise embeddings from self-supervised speech models</div>
+        <div class="pub-meta">B. Sanjay, P. Vijayalakshmi, M. P. Actlin Jeeva, M. K. Priyadharshini, et al. &middot; Speech Communication &middot; 2026</div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div>
+        <div class="pub-title">Severity classification and dysarthric speech detection using self-supervised representations</div>
+        <div class="pub-meta">B. Sanjay, M. K. Priyadharshini, P. Vijayalakshmi, T. Nagarajan &middot; ICON &middot; 2024</div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div>
+        <div class="pub-title">Improved medical image captioning using vision transformers and graph networks</div>
+        <div class="pub-meta">B. Sanjay, J. Themozhi, P. Vijayalakshmi &middot; IEEE TENCON &middot; 2024</div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div>
+        <div class="pub-title">Tamil dysarthric speech data collection: challenges and constraints</div>
+        <div class="pub-meta">P. Vijayalakshmi, T. Nagarajan, K. Ananthakrishnan, B. Sanjay, P. Gayathri &middot; 12th Intl. Conf. on Bio Signals, Images &amp; Instrumentation &middot; 2026</div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div>
+        <div class="pub-title">ADHD classification through EEG-derived centrality measures and machine learning: a neurobiological perspective</div>
+        <div class="pub-meta">S. Merudhula, M. Kesavan, B. Sanjay, J. Themozhi, R. Sundareshwaran, et al. &middot; IEEE INDICON &middot; 2024</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPERIENCE ================= -->
+  <section id="experience">
+    <div class="section-head"><h2>Experience</h2></div>
+
+    <div class="job">
+      <div class="job-when">Sep 2025 to<br>Present</div>
+      <div>
+        <div class="job-org">Signal Analysis and Interpretation Laboratory (SAIL), USC</div>
+        <div class="job-role">Graduate Student Researcher</div>
+        <ul>
+          <li>Built a unified EMG-to-speech TRF pipeline across two corpora using Eelbrain boosting on Hilbert/TKEO features; identified a pre-onset EMG&ndash;speech coupling peak at <b>&minus;80 to &minus;110&nbsp;ms</b> via zero-shot transfer.</li>
+          <li>Designed a text-free dysarthric speech enhancement framework in wav2vec2 embedding space: structured forward corruption reversed via a factorized architecture with learned gating, reaching <b>0.864 STOI</b> and <b>2.829 PESQ</b> on TORGO, +<b>0.08 STOI</b> via MetricGAN+.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-when">Jun 2024 to<br>Aug 2024</div>
+      <div>
+        <div class="job-org">Speech and Technologies Lab, IIT Madras</div>
+        <div class="job-role">Machine Learning Intern</div>
+        <ul>
+          <li>Built a multilingual ASR pipeline pairing discrete speech-unit modeling with Transformer/Conformer models; mixed-precision training across an <b>8-GPU cluster</b> cut training time by <b>60%</b>.</li>
+          <li>Trained on <b>8,000+ hours</b> of multilingual speech and deployed a live-inference demo via Gradio, reaching a <b>WER of ~9&ndash;10%</b>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-when">Apr 2023 to<br>Sep 2023</div>
+      <div>
+        <div class="job-org">HCL Technologies</div>
+        <div class="job-role">Software Engineer Intern &middot; Project Shiksha</div>
+        <ul>
+          <li>Built the backend framework and server (FastAPI/Flask, database-backed) for HCL's Shiksha Hindi&ndash;Tamil machine-translation platform, handling storyboard preprocessing and translation serving.</li>
+          <li>Trained SMT (Moses) and fine-tuned NMT (OpenNMT-py/IndicTrans) models on <b>2.4M+</b> parallel sentences, improving BLEU from 25.69 to <b>73.54</b> with <b>80%</b> human-rated quality.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROJECTS ================= -->
+  <section id="projects">
+    <div class="section-head">
+      <h2>Selected projects</h2>
+      <div class="section-note">9 of 17 repositories &middot; <a href="https://github.com/Sanjay180803" target="_blank">rest on GitHub</a></div>
+    </div>
+
+    <div class="filters">
+      <button class="filter-btn" data-cat="speech">Speech &amp; Clinical AI</button>
+      <button class="filter-btn" data-cat="systems">Systems &amp; Data Engineering</button>
+      <button class="filter-btn" data-cat="agentic">Agentic AI</button>
+    </div>
+
+    <div class="projects-grid" id="grid">
+
+      <!-- SPEECH -->
+      <div class="card" data-cat="speech">
+        <div class="card-top"><h3>E2E Dysarthric Voice Conversion using Contrastive Soft Units</h3></div>
+        <div class="stack-tags"><span class="stack-tag">PyTorch</span><span class="stack-tag">Fairseq</span><span class="stack-tag">mHuBERT</span><span class="stack-tag">HiFi-GAN</span><span class="stack-tag">Kaldi</span><span class="stack-tag">Conformer</span></div>
+        <ul>
+          <li>Built a textless dysarthric voice conversion system mapping impaired speech to healthy mHuBERT soft units via a seq2seq S2UT model.</li>
+          <li>Cut ASR word error rate on moderate dysarthria from 19.54% to <b>9.44%</b>, and raised BERT similarity from 0.55 to <b>0.75</b>.</li>
+        </ul>
+        <div class="card-links"><a href="https://github.com/Sanjay180803/E2E-Dysarthric-Voice-Conversion-using-Contrastive-Soft-Units" target="_blank">Repository</a></div>
+      </div>
+
+      <div class="card" data-cat="speech">
+        <div class="card-top"><h3>SSL-Based Multilingual Dysarthric Speech Detection &amp; Severity Classification</h3><span class="tag">ICON 2024</span></div>
+        <div class="stack-tags"><span class="stack-tag">Python</span><span class="stack-tag">Wav2Vec2</span><span class="stack-tag">DistilAlHuBERT</span><span class="stack-tag">SVM</span><span class="stack-tag">CNN</span></div>
+        <ul>
+          <li>Built a feature-extraction and classification pipeline comparing Wav2Vec2-BASE and DistilAlHuBERT embeddings on the Tamil Dysarthric Speech Corpus (30 speakers, 365 words each).</li>
+          <li>DistilAlHuBERT reached <b>99% detection accuracy</b> and <b>95.28% severity-classification accuracy</b>, beating the baseline by up to <b>27 points</b>.</li>
+        </ul>
+        <div class="card-links"><a href="https://scholar.google.com/citations?user=0P8r84AAAAAJ&hl=en" target="_blank">Google Scholar</a></div>
+      </div>
+
+      <div class="card" data-cat="speech">
+        <div class="card-top"><h3>Medical Image Captioning using Vision Transformers &amp; Graph Networks</h3><span class="tag">IEEE TENCON 2024</span></div>
+        <div class="stack-tags"><span class="stack-tag">Python</span><span class="stack-tag">Vision Transformers</span><span class="stack-tag">Graph Neural Networks</span></div>
+        <ul>
+          <li>Proposed a captioning architecture for medical images combining vision-transformer visual encoding with graph-network relational reasoning between image regions.</li>
+          <li>Published at IEEE TENCON 2024; cited by 3 subsequent works.</li>
+        </ul>
+        <div class="card-links"><a href="https://scholar.google.com/citations?user=0P8r84AAAAAJ&hl=en" target="_blank">Google Scholar</a></div>
+      </div>
+
+      <!-- SYSTEMS -->
+      <div class="card" data-cat="systems">
+        <div class="card-top"><h3>Distributed Secure Admission-Controlled RPC Gateway</h3></div>
+        <div class="stack-tags"><span class="stack-tag">Python</span><span class="stack-tag">FastAPI</span><span class="stack-tag">Redis</span><span class="stack-tag">Docker Compose</span><span class="stack-tag">HMAC/JWT</span></div>
+        <ul>
+          <li>Built a Breakwater-inspired (OSDI'20) admission-control gateway issuing HMAC-signed, replay-proof credits with trust-aware throttling, achieving <b>100%</b> replay rejection and auto-blocking clients after <b>3</b> violations.</li>
+          <li>Found isolated replicas over-admitting <b>4x</b> budget; fixed via a Redis-backed ledger with atomic Lua scripts at just <b>+1.5ms</b> added latency.</li>
+        </ul>
+        <div class="card-links">
+          <a href="https://github.com/Sanjay180803/secure-admission-gateway-distributed" target="_blank">Repository</a>
+        </div>
+      </div>
+
+      <div class="card" data-cat="systems">
+        <div class="card-top"><h3>Nexus: AI-Augmented Project Management Platform</h3></div>
+        <div class="stack-tags"><span class="stack-tag">FastAPI</span><span class="stack-tag">PostgreSQL</span><span class="stack-tag">React</span><span class="stack-tag">Docker</span><span class="stack-tag">AWS EC2</span><span class="stack-tag">GitHub Actions</span><span class="stack-tag">Locust</span></div>
+        <ul>
+          <li>Deployed a full-stack platform on AWS EC2 with JWT-authenticated REST APIs and automated CI/CD.</li>
+          <li>Load tested under <b>500 concurrent users</b>, diagnosed an N+1 query and connection-pool bottleneck, and cut p95 response time from <b>2.8s to under 500ms</b>.</li>
+        </ul>
+        <div class="card-links"><a href="https://github.com/Sanjay180803/Nexus" target="_blank">Repository</a></div>
+      </div>
+
+      <div class="card" data-cat="systems">
+        <div class="card-top"><h3>Streamora: AI-Powered Streaming Recommendation System</h3></div>
+        <div class="stack-tags"><span class="stack-tag">PyTorch</span><span class="stack-tag">ONNX</span><span class="stack-tag">FastAPI</span><span class="stack-tag">Redis</span><span class="stack-tag">Kafka</span><span class="stack-tag">Docker</span><span class="stack-tag">AWS EC2</span></div>
+        <ul>
+          <li>Benchmarked BERT4Rec against SASRec and GRU-LightGCN, reaching <b>HR@10 0.309</b> on <b>649K</b> interactions.</li>
+          <li>Deployed with Redis caching and a Kafka feedback pipeline, cutting cache-hit latency to under <b>2ms</b> from 150ms.</li>
+        </ul>
+        <div class="card-links"><a href="https://github.com/RP-1106/Streamora-Recommendation-System" target="_blank">Repository</a></div>
+      </div>
+
+      <!-- AGENTIC -->
+      <div class="card" data-cat="agentic">
+        <div class="card-top"><h3>Multi-Agent Supply Chain Orchestrator</h3></div>
+        <div class="stack-tags"><span class="stack-tag">Python</span><span class="stack-tag">LangGraph</span><span class="stack-tag">Kafka</span><span class="stack-tag">Redis</span><span class="stack-tag">MCP</span><span class="stack-tag">A2A</span><span class="stack-tag">Claude API</span></div>
+        <ul>
+          <li>Architected a 4-agent LangGraph platform coordinating via a Kafka-queued orchestrator with Redis-backed atomic admission control.</li>
+          <li>Found and fixed an at-least-once delivery bug during consumer-group rebalances with a Redis idempotency guard; load tested at <b>72+</b> executions, <b>100%</b> success.</li>
+        </ul>
+        <div class="card-links">
+          <a href="https://github.com/Sanjay180803/Supply-Chain-agent-orchestrator" target="_blank">Repository</a>
+        </div>
+      </div>
+
+      <div class="card" data-cat="agentic">
+        <div class="card-top"><h3>Patient Education &amp; Policy Q&amp;A Retrieval Gateway</h3></div>
+        <div class="stack-tags"><span class="stack-tag">Python</span><span class="stack-tag">FastAPI</span><span class="stack-tag">Qdrant</span><span class="stack-tag">Redis</span><span class="stack-tag">BM25</span><span class="stack-tag">Cross-Encoder Reranking</span></div>
+        <ul>
+          <li>Built a jurisdiction-scoped RAG backend with hybrid BM25 + vector retrieval, correcting a mismatched ranking to a top-1 tie.</li>
+          <li>Diagnosed a bi-encoder failure mode via a 23-question eval harness; cross-encoder reranking raised adversarial refusal accuracy <b>58.3% &rarr; 83.3%</b>.</li>
+        </ul>
+        <div class="card-links"><a href="https://github.com/Sanjay180803/Paitent-Education-Retrieval" target="_blank">Repository</a></div>
+      </div>
+
+      <div class="card" data-cat="agentic">
+        <div class="card-top"><h3>Bridging Medical Deserts: Agentic AI Coordination Engine</h3></div>
+        <div class="stack-tags"><span class="stack-tag">Python</span><span class="stack-tag">LangChain</span><span class="stack-tag">FAISS</span><span class="stack-tag">PostgreSQL</span><span class="stack-tag">GeoPandas</span></div>
+        <ul>
+          <li>Built an agentic query engine over 4 relational datasets (7,482 doctors, 150 hospitals) routing queries to dynamic SQL generation or geospatial filtering.</li>
+          <li>Evaluated intent classification on 100 test queries: <b>92%</b> accuracy, <b>95%</b> agreement with manual expert lookup.</li>
+        </ul>
+        <div class="card-links"><a href="https://github.com/Sanjay180803/Bridging-Medical-Deserts-Agentic-AI-Coordination-Engine-for-Global-Healthcare" target="_blank">Repository</a></div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <h2>Get in touch</h2>
+    <p>Always happy to connect and talk about interesting problems, whether it's work, ideas, or opportunities.</p>
+    <div class="links">
+      <a href="mailto:sanjayba@usc.edu">sanjayba@usc.edu</a>
+      <a href="https://linkedin.com/in/b-sanjay1808" target="_blank">LinkedIn</a>
+      <a href="https://github.com/Sanjay180803" target="_blank">GitHub</a>
+      <a href="https://scholar.google.com/citations?user=0P8r84AAAAAJ&hl=en" target="_blank">Google Scholar</a>
+    </div>
+  </footer>
+</div>
+
+<script>
+  const buttons = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.card');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const alreadyActive = btn.classList.contains('active');
+      buttons.forEach(b => b.classList.remove('active'));
+      if (alreadyActive) {
+        cards.forEach(card => card.classList.remove('hidden'));
+      } else {
+        btn.classList.add('active');
+        const cat = btn.dataset.cat;
+        cards.forEach(card => {
+          card.classList.toggle('hidden', card.dataset.cat !== cat);
+        });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
