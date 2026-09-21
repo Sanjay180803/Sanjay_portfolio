@@ -117,6 +117,74 @@
   .section-note a{color:var(--paper-dim);text-decoration:underline;text-underline-offset:3px;}
   .section-note a:hover{color:var(--paper);}
 
+  /* ---------- EDUCATION ---------- */
+  .edu{
+    display:grid;
+    grid-template-columns:160px 1fr;
+    gap:20px;
+    padding:26px 0;
+    border-top:1px solid var(--rule);
+  }
+  .edu:first-of-type{border-top:none;}
+  .edu-when{
+    font-size:0.86rem;
+    color:var(--paper-faint);
+    padding-top:4px;
+  }
+  .edu-school{
+    font-family:'Spectral',serif;
+    font-size:1.2rem;
+    font-weight:600;
+  }
+  .edu-school .sub{
+    font-weight:400;
+    color:var(--paper-dim);
+  }
+  .edu-degree{
+    font-style:italic;
+    font-family:'Spectral',serif;
+    color:var(--paper-dim);
+    font-size:0.98rem;
+    margin-top:2px;
+  }
+  .edu-gpa{
+    display:inline-block;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.78rem;
+    color:var(--agentic);
+    border:1px solid rgba(242,169,60,0.4);
+    border-radius:3px;
+    padding:1px 7px;
+    margin-top:10px;
+  }
+  .edu-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--paper-faint);
+    margin-top:16px;
+  }
+  .course-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-top:8px;
+  }
+  .course-tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.76rem;
+    color:var(--paper-dim);
+    background:var(--ink-2);
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:3px 9px;
+    white-space:nowrap;
+  }
+  @media(max-width:600px){
+    .edu{grid-template-columns:1fr;gap:4px;}
+  }
+
   /* ---------- PUBLICATIONS ---------- */
   .pub{
     padding:20px 0;
@@ -356,6 +424,44 @@
     <path d="M0,32 L18,32 L26,14 L34,50 L42,20 L50,44 L58,32 L74,32 L82,8 L90,56 L98,26 L106,38 L114,32 L130,32 L138,18 L146,46 L154,12 L162,52 L170,30 L178,34 L186,32 L202,32 L210,22 L218,42 L226,16 L234,48 L242,32 L258,32 L266,10 L274,54 L282,28 L290,36 L298,32 L314,32 L322,20 L330,44 L338,15 L346,49 L354,32 L370,32 L378,26 L386,38 L394,32 L410,32 L418,14 L426,50 L434,22 L442,42 L450,32 L466,32 L474,18 L482,46 L490,12 L498,52 L506,30 L514,34 L522,32 L538,32 L546,22 L554,42 L562,16 L570,48 L578,32 L594,32 L602,10 L610,54 L618,28 L626,36 L634,32 L650,32 L658,20 L666,44 L674,15 L682,49 L690,32 L706,32 L714,26 L722,38 L730,32 L746,32 L754,14 L762,50 L770,22 L778,42 L786,32 L802,32 L810,24 L818,40 L826,32 L840,32"
       fill="none" stroke="url(#wf)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
+
+  <!-- ================= EDUCATION ================= -->
+  <section id="education">
+    <div class="section-head"><h2>Education</h2></div>
+
+    <div class="edu">
+      <div class="edu-when">Aug 2025 to<br>May 2027</div>
+      <div>
+        <div class="edu-school">University of Southern California <span class="sub">&middot; Viterbi School of Engineering</span></div>
+        <div class="edu-degree">Master of Science in Electrical Engineering, specialization in Machine Learning &amp; Data Science</div>
+        <div class="edu-label">Coursework</div>
+        <div class="course-tags">
+          <span class="course-tag">Distributed Systems</span>
+          <span class="course-tag">Database Systems</span>
+          <span class="course-tag">Deep Learning</span>
+          <span class="course-tag">Natural Language Processing</span>
+          <span class="course-tag">Probabilistic Graphical Models</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="edu">
+      <div class="edu-when">Nov 2021 to<br>May 2025</div>
+      <div>
+        <div class="edu-school">Sri Sivasubramaniya Nadar College of Engineering <span class="sub">&middot; Anna University</span></div>
+        <div class="edu-degree">Bachelor of Engineering in Electronics and Communication Engineering</div>
+        <div class="edu-gpa">GPA 3.90 / 4.0</div>
+        <div class="edu-label">Coursework</div>
+        <div class="course-tags">
+          <span class="course-tag">Machine Learning</span>
+          <span class="course-tag">Deep Learning</span>
+          <span class="course-tag">Data Structures</span>
+          <span class="course-tag">Statistics &amp; Probability</span>
+          <span class="course-tag">Data Science</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ================= PUBLICATIONS ================= -->
   <section id="publications">
